@@ -8,7 +8,12 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
 
 const authRouter = require("./src/auth/auth.router");
 const usersRouter = require("./src/users/users.router");

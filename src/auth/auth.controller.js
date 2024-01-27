@@ -4,6 +4,11 @@ const {
   checkStudentId,
 } = require("../auth/auth.service");
 
+exports.logOut = async (req, res) => {
+  res.clearCookie("token");
+  return res.json({ success: true });
+};
+
 exports.signUp = async (req, res) => {
   const body = await req.body;
   return await signUp(res, body);

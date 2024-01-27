@@ -2,9 +2,8 @@ const jwt = require("jsonwebtoken");
 
 exports.authGuard = (req, res, next) => {
   try {
-    const bearerToken = req.headers.authorization;
-    console.log(bearerToken);
-    const token = bearerToken.split(" ")[1];
+    const token = req.cookies.token;
+    console.log(token);
     const user = jwt.verify(token, process.env.JWT_SECRET);
     if (!user) {
       return res.json({ success: false, message: "Unauthorized" });
