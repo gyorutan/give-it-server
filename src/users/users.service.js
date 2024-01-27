@@ -1,6 +1,7 @@
 const User = require("../models/User");
 
 exports.getMyProfile = async (res, userId) => {
+  console.log(userId);
   const user = await User.findOne({ _id: userId });
   if (!user) {
     return res.json({ success: false, message: "유저가 없습니다" });

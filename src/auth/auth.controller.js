@@ -1,8 +1,14 @@
 const {
+  logIn,
   signUp,
   checkUsername,
   checkStudentId,
 } = require("../auth/auth.service");
+
+exports.logIn = async (req, res) => {
+  const body = await req.body;
+  return await logIn(res, body);
+};
 
 exports.logOut = async (req, res) => {
   res.clearCookie("token");
